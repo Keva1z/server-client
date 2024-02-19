@@ -48,6 +48,10 @@ class client:
         self.connected = False
         self.client.close()
         exit()
+        
+    def send(self, name: str, data) -> None:
+        pack = packet(name, data)
+        packmng.send(self.client, pack)
     
     def reciving(self):
         while self.connected:
@@ -86,6 +90,6 @@ def get_valid_addr() -> list[str, int]:
         exit()
     return [ip, port]
 
-addr = ("localhost", 5050)
+# addr = ("localhost", 5050)
 
-c = client(addr[0], addr[1])
+# c = client(addr[0], addr[1])
