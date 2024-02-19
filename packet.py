@@ -37,7 +37,7 @@ class packmng:
         try:
             h_len = packmng._rclength(conn)
             if h_len:
-                return packet._decode(conn.recv(int(h_len)))
+                return packet._decode(conn.recv(int(h_len), socket.MSG_WAITALL))
             return packet()
         except ConnectionResetError:
             return packet()
